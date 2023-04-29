@@ -15,7 +15,7 @@ services:
       MONGO_INITDB_ROOT_PASSWORD: example
 
   was:
-    image: helloworld-was:1.0
+    image: helloworld-was:1.1
     # networks:
     #   - outside
     ports:
