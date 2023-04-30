@@ -2,6 +2,8 @@
 
 module.exports = async function (fastify, opts) {
   fastify.get('/', async function (request, reply) {
-    return "김밥 10줄 주세요!"
+    console.log(process.env.MONGO_HOSTNAME)
+    console.log(process.env.MONGO_USERNAME)
+    return { root: true, host: process.env.MONGO_HOSTNAME, username: process.env.MONGO_USERNAME }
   })
 }

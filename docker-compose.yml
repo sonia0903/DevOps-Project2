@@ -9,17 +9,25 @@ services:
     #   - outside
     restart: always
     ports:
-      - "27017:27017"
+      - 27017:27017
     environment:
       MONGO_INITDB_ROOT_USERNAME: root
       MONGO_INITDB_ROOT_PASSWORD: example
 
   was:
-    image: helloworld-was:1.1
+    image: helloworld-was:1.6
+    restart: always
+    # container name: server
     # networks:
     #   - outside
+    depends_on:
+      - mongo
     ports:
-      - "3000:3000"
+      - 3000:3000
+    environment:
+      MONGO_HOSTNAME: mongo # endpoint 이름으로 지정해야 함
+      MONGO_USERNAME: root
+      MONGO_PASSWORD: example
 
 # networks:
 #     outside:
